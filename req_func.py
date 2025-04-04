@@ -30,8 +30,10 @@ def req_words():
     response = requests.get(
         f"{BASE_URL}/api/words",
         headers=headers)
-    b = response.json()
-    return b
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return False
 
 
 def req_rounds():
@@ -39,23 +41,34 @@ def req_rounds():
         f"{BASE_URL}/api/rounds",
         headers=headers
     )
-    return response.json()
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return False
 
 
 def req_towers():
     response = requests.get(
         f"{BASE_URL}/api/towers",
         headers=headers)
-    return response.json()
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return False
 
 def req_shuffle():
     response = requests.get(
         f"{BASE_URL}/api/shuffle",
         headers=headers)
-    return response.json()
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return False
 
 def req_build(data):
     response = requests.post(
         f"{BASE_URL}/api/build",
         headers=headers,
         json=data)
+    if response.status_code == 404:
+        return False
