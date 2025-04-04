@@ -7,6 +7,24 @@ headers = {
     "Content-Type": "application/json"
 }
 
+'''
+data = {
+    "done": False,  # Продолжаем строительство
+    "words": [
+        {
+            "dir": 1,  # Выбор направления
+            "id": 123,  # ID слова
+            "pos": [0, 0, 0]  # Координаты первой буквы
+        },
+        {
+            "dir": 2,  # Направление [1, 0, 0]
+            "id": 124,
+            "pos": [1, 0, 0]
+        }
+    ]
+}
+'''
+
 
 def req_words():
     response = requests.get(
@@ -24,12 +42,20 @@ def req_rounds():
     return response.json()
 
 
-
 def req_towers():
     response = requests.get(
         f"{BASE_URL}/api/towers",
         headers=headers)
     return response.json()
 
-def egor():
-    pass
+def req_shuffle():
+    response = requests.get(
+        f"{BASE_URL}/api/shuffle",
+        headers=headers)
+    return response.json()
+
+def req_build(data):
+    response = requests.post(
+        f"{BASE_URL}/api/build",
+        headers=headers,
+        json=data)
