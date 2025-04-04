@@ -30,3 +30,6 @@ def req_towers():
         f"{BASE_URL}/api/towers",
         headers=headers)
     return response.json()
+
+def egor():
+    pass
