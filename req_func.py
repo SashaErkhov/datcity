@@ -13,7 +13,7 @@ def req_words():
         f"{BASE_URL}/api/words",
         headers=headers)
     b = response.json()
-    return b['words']
+    return b
 
 
 def req_rounds():
