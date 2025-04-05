@@ -72,3 +72,4 @@ def req_build(data):
         json=data)
     if response.status_code == 404:
         return False
+    return response.json()
